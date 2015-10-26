@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
   /*
     Test code to generate a human player and an orc player
@@ -190,5 +190,5 @@ $("#class-select .actual_classes").parent().click(function(){
             // --> var damage = ((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + (damage * .3) 
     //Calcualte Enemy Damage and substract from Player Health -- same formula?
 
-});
+// });
 
