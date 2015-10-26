@@ -103,3 +103,92 @@ body {
   padding: 0 50px 0 20px;
   border-radius: 0 5px 5px 0;
 }
+
+/* Ben code individual battles */
+#indivBattle{
+  width: 100%;
+  height: 800px;
+  /*background-color: red;*/
+  background-image: url("http://coolvibe.com/wp-content/uploads/2012/07/Concept-Art-Hamza-Soorej-Bajwa-Pilgrims.jpg");
+  background-position: center; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: none;
+  position: relative;
+}
+
+.combatant{
+  height: 300px;
+  width: 300px;
+  /*background-color: black;*/
+  position: absolute;
+}
+
+#player_battle_holder{
+  left: 0px;
+  top: 100px;
+}
+
+#player_battle_holder img{
+  width: 400px;
+}
+
+#enemy_battle_holder{
+  right: 60px;
+   top: 100px;
+}
+
+#enemy_battle_holder img{
+  width: 400px;
+}
+
+.stats{
+  position: absolute;
+  top: 500px;
+  width: 50%;
+  background-color: white;
+  font-size: 1.3rem;
+  min-height: 50px;
+  padding: 20px
+}
+.stats h1{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.stats span{
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding-left: 10px;
+}
+
+#player_stats_holder{
+  left: 0px;
+  text-align: left;
+}
+
+#enemy_stats_holder{
+  text-align: right;
+  right: 0px;
+}
+
+#action_list{
+  position: absolute;
+  bottom: 0px;
+  padding-left: 0px;
+  width: 100%;
+}
+#action_list li{
+  list-style-type: none;
+  display: inline-block;
+  margin: auto; 
+  width: 33%;
+  height: 100px;
+}
+#action_list button{
+  width: 100%;
+  height: 100%;
+}
+
+
+

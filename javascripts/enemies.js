@@ -18,3 +18,9 @@ var Orc = function() {
 
 Orc.prototype = new Monster();
 
+
+
+//Ben Code
+  //Define enemies
+
+

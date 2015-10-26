@@ -44,34 +44,34 @@
         </div>
       </div>
 
-      <div class="container-fluid">
+      <div id="#classesHolder" class="container-fluid">
         <div class="row">
           <div class="col-sm-4">
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Warrior</span>
+                <span class="btn__text actual_classes">Warrior</span>
               </a>
             </div>      
             
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Valkyrie</span>
+                <span class="btn__text actual_classes">Valkyrie</span>
               </a>
             </div>      
             
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">berserker</span>
+                <span class="btn__text actual_classes">berserker</span>
               </a>
             </div>      
             
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Monk</span>
+                <span class="btn__text actual_classes">Monk</span>
               </a>
             </div>
           </div>
@@ -80,21 +80,21 @@
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Wizard</span>
+                <span class="btn__text actual_classes">Wizard</span>
               </a>
             </div>
             
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Sorcerer</span>
+                <span class="btn__text actual_classes">Sorcerer</span>
               </a>
             </div>
             
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Conjurer</span>
+                <span class="btn__text actual_classes">Conjurer</span>
               </a>
             </div>
           </div>
@@ -102,21 +102,21 @@
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Thief</span>
+                <span class="btn__text actual_classes">Thief</span>
               </a>
             </div>
             
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Ninja</span>
+                <span class="btn__text actual_classes">Ninja</span>
               </a>
             </div>
 
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Assassin</span>
+                <span class="btn__text actual_classes">Assassin</span>
               </a>
             </div>
 
@@ -135,9 +135,10 @@
            href="#" 
            next="card--weapon">
           <span class="btn__prompt">></span>
-          <span class="btn__text">Select weapon</span>
+          <span id="wep-link" class="btn__text">Select weapon</span>
         </a>
       </div>
+
     </section>
 
     <section id="weapon-select" class="card card--weapon">
@@ -153,6 +154,29 @@
         </div>
       </div>
 
+      <div id="#classesHolder" class="container-fluid">
+           <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text actual_weapon">Dagger</span>
+              </a>
+            </div>
+
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text actual_weapon">Broadsword</span>
+              </a>
+            </div>
+
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text actual_weapon">Axe</span>
+              </a>
+            </div>
+      </div>
+
       <div class="card__button">
         <a class="card__link btn btn--big btn--orange" 
            href="#" 
@@ -163,7 +187,32 @@
       </div>
     </section>
 
-    <section id="battleground" class="card card--battleground"></section>
+    <section id="battleground" class="card card--battleground">
+     <div id="goatEnemy" class="card__button enemy">
+              <a class="class__link btn btn--big btn--blue" href="#"
+                next="card--battle">
+                <span class="btn__prompt">>Orc</span>
+                <span class="btn__text">Fight</span>
+              </a>
+      </div>
+
+    </section><!-- end battleground -->
+
+    <section id="indivBattle">
+        <div id="player_battle_holder" class="combatant">
+          <img src="http://4.bp.blogspot.com/-1Q4qQpDWHQc/TkuFw--KaBI/AAAAAAAABPw/Fhx3ekbNmlI/s1600/jedi-knight.png">
+        </div>
+        <div id="player_stats_holder" class="stats">Player:</div>
+      <div id="enemy_battle_holder" class="combatant">
+        <img src="http://www.d3press.us/files/Puzzle%20Quest%202/Puzzle%20Quest%202%20Features/Game%20Enemies/Art%20Assets/Character%20Art/Dark%20Orc/Dark%20orc.PNG">
+      </div>
+        <div id="enemy_stats_holder" class="stats"> Enemy:</div>
+        <ul id="action_list">
+          <li><button>Attack</button></li>
+          <li><button>Run</button></li>
+          <li><button>Pack</button></li>
+        </ul>
+    </section>
 
   </article>
 
