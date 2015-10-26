@@ -169,8 +169,12 @@ $("#class-select .actual_classes").parent().click(function(){
 
   });
 
+  var currentEnemy;
+
 
   $("#goatEnemy").click(function(){
+    currentEnemy = orc;
+    console.log(currentEnemy);
     $("#battleground").hide();
      $("#indivBattle").show();
       $("#player_stats_holder").append("<h1>"+currentPlayer.toString()+"</h1>"+
@@ -179,14 +183,16 @@ $("#class-select .actual_classes").parent().click(function(){
                                         "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
       // $("#player_stats_holder").append("<p>Current Health is "+ currentPlayer.health+"<p>");
        $("#enemy_stats_holder").append("<h1>"+orc.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ orc.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ orc.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ orc.intelligence+"</span><p>"); 
-      // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
-      $("#enemy_battle_holder").html("<img src="+ orc.imageSource + ">");
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
+      // $("#enemy_stats_holder").append("<p>Current Health is "+ currentEnemy.health+"<p>");
+      $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
   });
 
 $("#bowserEnemy").click(function(){
+    currentEnemy = bowser;
+    console.log(currentEnemy);
     $("#battleground").hide();
      $("#indivBattle").show();
       $("#player_stats_holder").append("<h1>"+currentPlayer.toString()+"</h1>"+
@@ -194,12 +200,12 @@ $("#bowserEnemy").click(function(){
                                         "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
                                         "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
       // $("#player_stats_holder").append("<p>Current Health is "+ currentPlayer.health+"<p>");
-       $("#enemy_stats_holder").append("<h1>"+bowser.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ bowser.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ bowser.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ bowser.intelligence+"</span><p>"); 
+       $("#enemy_stats_holder").append("<h1>"+currentEnemy.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
       // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
-      $("#enemy_battle_holder").html("<img src="+ bowser.imageSource + ">");
+      $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
   });
   
 //Battle Logic
@@ -214,10 +220,10 @@ $("#bowserEnemy").click(function(){
       alert("Player did " + playerDamage + " damage!");
 
 
-      orc.health = orc.health - playerDamage;
-      console.log(orc.health, "orc health");
+      currentEnemy.health = currentEnemy.health - playerDamage;
+      console.log(currentEnemy.health, "orc health");
 
-      if(orc.health <= 0) {
+      if(currentEnemy.health <= 0) {
         enemyDeath = true;
         alert("you won!");
         $("#indivBattle").hide();
@@ -225,12 +231,12 @@ $("#bowserEnemy").click(function(){
        
       } else {
 
-       $("#enemy_stats_holder").html("<h1>"+orc.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ orc.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ orc.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ orc.intelligence+"</span><p>"); 
+       $("#enemy_stats_holder").html("<h1>"+currentEnemy.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
 
-       var enemyDamage = Math.floor(((orc.strength + orc.intelligence + orc.weapon.damage)/7) + Math.random() * (orc.strength/8));
+       var enemyDamage = Math.floor(((currentEnemy.strength + currentEnemy.intelligence + currentEnemy.weapon.damage)/7) + Math.random() * (currentEnemy.strength/8));
        console.log("enemy damage", enemyDamage);
        alert("Enemy did " + enemyDamage + " damage!");
 
