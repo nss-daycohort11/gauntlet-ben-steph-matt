@@ -190,5 +190,7 @@ body {
   height: 100%;
 }
 
-
+.grayOut{
+  background-color: gray;
+}
 

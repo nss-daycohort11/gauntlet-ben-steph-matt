@@ -224,6 +224,13 @@ $("#bowserEnemy").click(function(){
       console.log(currentEnemy.health, "orc health");
 
       if(currentEnemy.health <= 0) {
+          if(currentEnemy === bowser){
+            $("#bowserEnemy").unbind("click");
+             $("#bowserEnemy").children().addClass("grayOut");
+          } else if(currentEnemy === orc){
+            $("#goatEnemy").unbind("click");
+             $("#goatEnemy").children().addClass("grayOut");
+          }
         enemyDeath = true;
         alert("you won!");
         $("#indivBattle").hide();
