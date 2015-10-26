@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
   /*
     Test code to generate a human player and an orc player
@@ -13,6 +13,7 @@ $(document).ready(function() {
   orc.setWeapon(new BroadSword());
   console.log(orc.toString());
 
+  var bowser = new Bowser(); 
   /*
     Test code to generate a spell
    */
@@ -182,13 +183,76 @@ $("#class-select .actual_classes").parent().click(function(){
                                         "<p>Current Strength is "+"<span>"+ orc.strength+"</span><p>"+
                                         "<p>Current Intelligence is "+"<span>"+ orc.intelligence+"</span><p>"); 
       // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
+      $("#enemy_battle_holder").html("<img src="+ orc.imageSource + ">");
   });
 
+$("#bowserEnemy").click(function(){
+    $("#battleground").hide();
+     $("#indivBattle").show();
+      $("#player_stats_holder").append("<h1>"+currentPlayer.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+      // $("#player_stats_holder").append("<p>Current Health is "+ currentPlayer.health+"<p>");
+       $("#enemy_stats_holder").append("<h1>"+bowser.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ bowser.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ bowser.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ bowser.intelligence+"</span><p>"); 
+      // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
+      $("#enemy_battle_holder").html("<img src="+ bowser.imageSource + ">");
+  });
+  
 //Battle Logic
   //when attack is clicked
     //Calculate player damage and subtract from Enemy health-- formula str + int +damage /7 * a .1 - .3 modifier?
+    $("#attack-button").click(function(){
+      var playerDeath = false;
+      var enemyDeath = false;
+      if (playerDeath === false || enemyDeath === false) {
+      var playerDamage = Math.floor(((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.strength/8));
+      console.log("damage", playerDamage);
+      alert("Player did " + playerDamage + " damage!");
+
+
+      orc.health = orc.health - playerDamage;
+      console.log(orc.health, "orc health");
+
+      if(orc.health <= 0) {
+        enemyDeath = true;
+        alert("you won!");
+        $("#indivBattle").hide();
+        $("#battleground").show();
+       
+      } else {
+
+       $("#enemy_stats_holder").html("<h1>"+orc.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ orc.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ orc.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ orc.intelligence+"</span><p>"); 
+
+       var enemyDamage = Math.floor(((orc.strength + orc.intelligence + orc.weapon.damage)/7) + Math.random() * (orc.strength/8));
+       console.log("enemy damage", enemyDamage);
+       alert("Enemy did " + enemyDamage + " damage!");
+
+       currentPlayer.health = currentPlayer.health - enemyDamage;
+       console.log("player health", currentPlayer.health);
+
+       if (currentPlayer.health <= 0) {
+        playerDeath = true;
+        alert("game over");
+        $("#indivBattle").hide();
+        $("#battleground").show();
+       }
+
+       $("#player_stats_holder").html("<h1>"+currentPlayer.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+       }
+     }
+    });
             // --> var damage = ((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + (damage * .3) 
     //Calcualte Enemy Damage and substract from Player Health -- same formula?
 
-});
+// });
 

@@ -29,3 +29,9 @@ var WarAxe = function() {
 };
 WarAxe.prototype = new Weapon();
 
+var Claws = function() {
+  this.name = "claws";
+  this.damage = 14;
+  this.hands = 2;
+};
+Claws.prototype = new Weapon();
