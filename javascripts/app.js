@@ -309,6 +309,7 @@ $("#bowserEnemy").click(function(){
       $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
   });
 
+   //Added browser enemy
  $("#browserEnemy").click(function(){
     currentEnemy = browser;
     console.log(currentEnemy);

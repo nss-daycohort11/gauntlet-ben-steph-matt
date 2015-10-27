@@ -73,7 +73,7 @@ var BowOfSniping = function() {
   this.hands = 2;
 };
 BowOfSniping.prototype = new Weapon();
-
+// Browser's attack
 var Torment = function() {
   this.name = "Torment";
   this.damage = 20;

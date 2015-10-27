@@ -33,7 +33,7 @@ var Bowser = function() {
 Bowser.prototype = new Monster();
 //Ben Code
   //Define enemies
-
+//Browser enemy
 var Browser = function() {
   this.playerName = "Browser";
   this.health += 60;
