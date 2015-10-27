@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   var audio = new Audio('Gauntlet Main Menu Theme.mp3');
+  audio.loop = true;
   audio.play();
 
   /*
