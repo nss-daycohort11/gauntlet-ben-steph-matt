@@ -21,6 +21,7 @@ Orc.prototype = new Monster();
 
 
 var Bowser = function() {
+  this.playerName = "Bowser";
   this.health += 50;
   this.class = new Berserker();
   this.strength += this.class.strengthBonus;

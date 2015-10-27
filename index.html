@@ -123,7 +123,7 @@
             <div class="card__button">
               <a class="class__link btn btn--big btn--yellow" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">surprise me</span>
+                <span class="btn__text actual_classes">surprise me</span>
               </a>
             </div>
           </div>
@@ -158,21 +158,52 @@
            <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text actual_weapon">Dagger</span>
+                <span class="btn__text fighter_weapon">Dagger</span>
               </a>
             </div>
 
               <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text actual_weapon">Broadsword</span>
+                <span class="btn__text fighter_weapon">Broadsword</span>
               </a>
             </div>
 
               <div class="card__button">
               <a class="class__link btn btn--big btn--blue" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text actual_weapon">Axe</span>
+                <span class="btn__text fighter_weapon">Axe</span>
+              </a>
+            </div>
+            <!-- New weps -->
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text mage_weapon">Staff O' Wuhnduhr</span>
+              </a>
+            </div>
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text mage_weapon">Book O' Reckoning</span>
+              </a>
+            </div>
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text stealth_weapon">Stunning Good Looks</span>
+              </a>
+            </div>
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text stealth_weapon">Throwing Stars</span>
+              </a>
+            </div>
+              <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text stealth_weapon">Bow of Sniping</span>
               </a>
             </div>
       </div>
@@ -188,10 +219,20 @@
     </section>
 
     <section id="battleground" class="card card--battleground">
+    <div class="card__prompt">
+       <div>
+         <a class="card__back btn btn--small" 
+            href="#"
+            previous="card--weapon">
+           <span class="btn__prompt">&lt;</span>
+           <span class="btn__text">Back</span>
+         </a>          
+       </div>
+     </div>
      <div id="goatEnemy" class="card__button enemy">
               <a class="class__link btn btn--big btn--blue" href="#"
                 next="card--battle">
-                <span class="btn__prompt">>Orc</span>
+                <span class="btn__prompt">>Fluffy</span>
                 <span class="btn__text">Fight</span>
               </a>
       </div>
@@ -225,9 +266,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="javascripts/player.js"></script>
-  <script src="javascripts/classes.js"></script>
   <script src="javascripts/weapons.js"></script>
   <script src="javascripts/spells.js"></script>
+  <script src="javascripts/classes.js"></script>
   <script src="javascripts/enemies.js"></script>
   <script src="javascripts/app.js"></script>
 

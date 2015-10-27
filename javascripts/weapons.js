@@ -35,3 +35,45 @@ var Claws = function() {
   this.hands = 2;
 };
 Claws.prototype = new Weapon();
+
+var StaffOhWunduhr = function() {
+  this.name = "Staff O' Wonder";
+  this.damage = 63;
+  this.hands = 2;
+};
+StaffOhWunduhr.prototype = new Weapon();
+
+var BookOReckoning = function() {
+  this.name = "Book O' Reckoning";
+  this.damage = 63;
+  this.hands = 2;
+};
+BookOReckoning.prototype = new Weapon();
+
+
+
+//weapons for stealth classes
+var StunningGoodLooks = function() {
+  this.name = "Stunning Good Looks";
+  this.damage = 43;
+  this.hands = 2;
+};
+StunningGoodLooks.prototype = new Weapon();
+
+var ThrowingStars = function() {
+  this.name = "Throwing Star";
+  this.damage = 25;
+  this.hands = 1;
+};
+ThrowingStars.prototype = new Weapon();
+
+var BowOfSniping = function() {
+  this.name = "Bow of Sniping";
+  this.damage = 55;
+  this.hands = 2;
+};
+BowOfSniping.prototype = new Weapon();
+
+
+
+

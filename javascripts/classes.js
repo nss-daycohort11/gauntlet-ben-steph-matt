@@ -72,6 +72,7 @@ var Mage = function() {
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
+  this.ability = new Sphere();
 };
 Mage.prototype = new PlayerClass();
 
@@ -117,4 +118,40 @@ Sorcerer.prototype = new Mage();
       - Ninja
       - Assassin
  */
+var Stealth = function() {
+ this.name = "Stealth";
+ this.agilityBonus = 10;
+ this.healthBonus = this.healthBonus - 10;
+ this.strengthBonus = this.strengthBonus - 20;
+ this.intelligenceBonus = this.intelligenceBonus + 20;
+};
+Stealth.prototype = new PlayerClass();
 
+var Thief = function(){
+ this.name = "Thief";
+ this.agilityBonus = this.agilityBonus + 5;
+ this.healthBonus = this.healthBonus + 10;
+ this.strengthBonus = this.strengthBonus -10;
+ this.intelligenceBonus = this.intelligenceBonus + 15;
+};
+Thief.prototype = new Stealth();
+
+var Ninja = function(){
+ this.name = "Ninja";
+ this.agilityBonus = this.agilityBonus + 10;
+ this.healthBonus = this.healthBonus + 15;
+ this.strengthBonus = this.strengthBonus + 5;
+ this.intelligenceBonus = this.intelligenceBonus + 10;
+ this.imageSource = "https://www.sideshowtoy.com/wp-content/uploads/2013/06/100022-product-silo.png";
+};
+Ninja.prototype = new Stealth();
+
+var Assassin = function(){
+ this.name = "Assassin";
+ this.agilityBonus = this.agilityBonus + 15;
+ this.healthBonus = this.healthBonus + 15;
+ this.strengthBonus = this.strengthBonus + 5;
+ this.intelligenceBonus = this.intelligenceBonus + 20;
+ this.imageSource = "http://3219a2.medialib.glogster.com/media/dd/dd10816effdd7bf1e739e2c4f966f6a2831589fbd587c69433b8ab236beec05b/assassins-creed-1.png";
+};
+Assassin.prototype = new Stealth();
