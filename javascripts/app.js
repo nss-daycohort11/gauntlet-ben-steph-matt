@@ -86,6 +86,9 @@ var currentPlayer = new Human();
 
 //Test enemy 
   orc.playerName = "Fluffy";
+
+//Register classtype
+var selectedClassType;
   
 
   //Build Functionality for Storing Player Name
@@ -114,33 +117,43 @@ $("#class-select .actual_classes").parent().click(function(){
   switch(currentPlayer.class){
       case "Wizard":
         currentPlayer.class = new Wizard();
+        selectedClassType = "Mage";
         break;
       case "Warrior":
         currentPlayer.class = new Warrior();
+        selectedClassType = "Fighter";
         break;
       case "Valkyrie":
         currentPlayer.class = new Valkyrie();
+        selectedClassType = "Fighter";
         break;
       case "berserker":
         currentPlayer.class = new Berserker();
+        selectedClassType = "Fighter";
         break;
       case "Monk":
         currentPlayer.class = new Monk();
+        selectedClassType = "Fighter";
         break;
        case "Sorcerer":
         currentPlayer.class = new Sorcerer();
+        selectedClassType = "Mage";
         break; 
       case "Conjurer":
         currentPlayer.class = new Conjurer();
+        selectedClassType = "Mage";
         break; 
        case "Thief":
         currentPlayer.class = new Thief();
+        selectedClassType = "Stealth";
         break; 
        case "Ninja":
         currentPlayer.class = new Ninja();
+        selectedClassType = "Stealth";
         break; 
       case "Assassin":
         currentPlayer.class = new Assassin();
+        selectedClassType = "Stealth";
         break;  
       case "surprise me":
         currentPlayer.class = currentPlayer.generateClass();
@@ -161,14 +174,30 @@ $("#class-select .actual_classes").parent().click(function(){
     console.log("current Health is ", currentPlayer.health);
 
     // add logic for classes, if class is equal to certain class, disable weapon selection for other class weapons
-    if(currentPlayer.class === "Warrior"){
+    if(selectedClassType === "Fighter"){
+      $(".mage_weapon").parent().addClass("grayOut");
+      $(".mage_weapon").unbind("click");
+      $(".stealth_weapon").parent().addClass("grayOut");
+      $(".stealth_weapon").unbind("click");
 
+    } if(selectedClassType === "Stealth"){
+      $(".mage_weapon").parent().addClass("grayOut");
+      $(".mage_weapon").unbind("click");
+      $(".fighter_weapon").parent().addClass("grayOut");
+      $(".fighter_weapon").unbind("click");
+    } if(selectedClassType === "Mage"){
+      $(".stealth_weapon").parent().addClass("grayOut");
+      $(".stealth_weapon").unbind("click");
+      $(".fighter_weapon").parent().addClass("grayOut");
+      $(".fighter_weapon").unbind("click");
     }
 
 });
 
+
+
   //Built Functionality for Weapon Selection
-  $(".actual_weapon").click(function(){
+  $(".fighter_weapon").click(function(){
     wepChosen = true;
     console.log($(this).html());
     var wepSelected = $(this).html();
@@ -188,13 +217,42 @@ $("#class-select .actual_classes").parent().click(function(){
       case "Axe":
         currentPlayer.weapon = new WarAxe();
         break;
-      case "Staff O' Wuhnduhr":
+    }
+
+  });
+
+$(".mage_weapon").click(function(){
+    wepChosen = true;
+    console.log($(this).html());
+    var wepSelected = $(this).html();
+
+    //the following switch statement is equivilent to -->
+          // if(wepSelected === "Broadsword"){
+          //   currentPlayer.weapon = new BroadSword();
+          // }    etc
+
+    switch(wepSelected){
+       case "Staff O' Wuhnduhr":
         currentPlayer.weapon = new StaffOhWunduhr();
         break;
       case "Book O' Reckoning":
         currentPlayer.weapon = new BookOReckoning();
         break;
-      case "Stunning Good Looks":
+      }
+    });
+
+
+$(".stealth_weapon").click(function(){
+    wepChosen = true;
+    console.log($(this).html());
+    var wepSelected = $(this).html();
+
+    //the following switch statement is equivilent to -->
+          // if(wepSelected === "Broadsword"){
+          //   currentPlayer.weapon = new BroadSword();
+          // }    etc
+  switch(wepSelected){
+     case "Stunning Good Looks":
         currentPlayer.weapon = new StunningGoodLooks();
         break;
       case "Bow of Sniping":
@@ -203,9 +261,8 @@ $("#class-select .actual_classes").parent().click(function(){
       case "Throwing Stars":
         currentPlayer.weapon = new ThrowingStars();
         break;
-    }
-
-  });
+      }
+    });
 
   var currentEnemy;
 
@@ -253,9 +310,16 @@ $("#bowserEnemy").click(function(){
       var playerDeath = false;
       var enemyDeath = false;
       if (playerDeath === false || enemyDeath === false) {
-      var playerDamage = Math.floor(((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.strength/8));
       console.log("damage", playerDamage);
-      alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" for "+ playerDamage + " damage!");
+
+      if(selectedClassType === "Mage"){
+        var playerDamage = Math.floor(((currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.intelligence/6));
+        alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" and "+currentPlayer.class.ability.name+" of "+currentPlayer.class.ability.type+" for "+ playerDamage + " damage!");
+      } else {
+        var playerDamage = Math.floor(((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.strength/8));
+        alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" for "+ playerDamage + " damage!");
+      }
+  
 
       //$("#player_battle_holder img").animate({marginLeft: 900}, 400, function(){ alert("Complete");});
 
@@ -271,6 +335,8 @@ $("#bowserEnemy").click(function(){
              $("#goatEnemy").children().addClass("grayOut");
           }
         enemyDeath = true;
+        $("#player_stats_holder").html("");
+        $("#enemy_stats_holder").html("");
         alert("you won!");
         $("#indivBattle").hide();
         $("#battleground").show();
@@ -292,6 +358,8 @@ $("#bowserEnemy").click(function(){
 
        if (currentPlayer.health <= 0) {
         playerDeath = true;
+        $("#player_stats_holder").html("");
+        $("#enemy_stats_holder").html("");
         alert("game over");
         $("#indivBattle").hide();
         $("#battleground").show();

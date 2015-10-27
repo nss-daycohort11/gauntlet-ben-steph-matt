@@ -38,14 +38,14 @@ Claws.prototype = new Weapon();
 
 var StaffOhWunduhr = function() {
   this.name = "Staff O' Wonder";
-  this.damage = 34;
+  this.damage = 63;
   this.hands = 2;
 };
 StaffOhWunduhr.prototype = new Weapon();
 
 var BookOReckoning = function() {
   this.name = "Book O' Reckoning";
-  this.damage = 32;
+  this.damage = 63;
   this.hands = 2;
 };
 BookOReckoning.prototype = new Weapon();

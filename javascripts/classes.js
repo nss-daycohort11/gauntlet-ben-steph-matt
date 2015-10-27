@@ -72,6 +72,7 @@ var Mage = function() {
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
+  this.ability = new Sphere();
 };
 Mage.prototype = new PlayerClass();
 
