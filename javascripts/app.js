@@ -132,6 +132,15 @@ $("#class-select .actual_classes").parent().click(function(){
         break; 
       case "Conjurer":
         currentPlayer.class = new Conjurer();
+        break; 
+       case "Thief":
+        currentPlayer.class = new Thief();
+        break; 
+       case "Ninja":
+        currentPlayer.class = new Ninja();
+        break; 
+      case "Assassin":
+        currentPlayer.class = new Assassin();
         break;  
       case "surprise me":
         currentPlayer.class = currentPlayer.generateClass();
