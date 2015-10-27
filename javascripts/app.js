@@ -383,10 +383,10 @@ $("#bowserEnemy").click(function(){
        $("#player_health_bar .current_hp").css("width", ((currentPlayer.health/totalPlayerHealth)*100)+"%");
 
        //animate color for health widths
-       if(currentPlayer.health <= (totalplayerHealth/2)){
-        $("#enemy_health_bar .current_hp").css("background-color","yellow");
-      } if(currentPlayer.health <= (totalplayerHealth/3)){
-        $("#enemy_health_bar .current_hp").css("background-color","red");
+       if(currentPlayer.health <= (totalPlayerHealth/2)){
+        $("#player_health_bar .current_hp").css("background-color","yellow");
+      } if(currentPlayer.health <= (totalPlayerHealth/3)){
+        $("#player_health_bar .current_hp").css("background-color","red");
       }
 
        if (currentPlayer.health <= 0) {
