@@ -33,10 +33,14 @@
     When any button with card__link class is clicked,
     move on to the next view.
    */
+
+//adding to handle for advancing IF player selects a class/weapon ---> only advance screen if class is picked and same for weapon
+    var classChosen = false;
+    var wepChosen = false;
+
   $(".card__link").click(function(e) {
     var nextCard = $(this).attr("next");
     var moveAlong = false;
-
 
     //checking the next attr of each and going to each in the following cases
     switch (nextCard) {
@@ -44,11 +48,11 @@
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (classChosen);
         break;
       //ben code added -->
       case "card--battleground":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (wepChosen);
         break;
       // case "card--battle":
       //   moveAlong = ($("#player-name").val() !== "");
@@ -95,7 +99,12 @@ var currentPlayer = new Human();
   });
 
   //Build Functionality for Class
+
 $("#class-select .actual_classes").parent().click(function(){
+  //tell app it is okay to advance screens/ go on to weapon selection
+    classChosen = true;
+
+
   console.log("Thang");
   //This grabs the innerHTML of selected Class
   console.log($(this).children()[1].innerHTML);
@@ -124,29 +133,34 @@ $("#class-select .actual_classes").parent().click(function(){
       case "Conjurer":
         currentPlayer.class = new Conjurer();
         break;  
-      case "Thief":
-        currentPlayer.class = new Thief();
-        break;   
-      case "Ninja":
-        currentPlayer.class = new Ninja();
-        break; 
-      case "Assassin":
-        currentPlayer.class = new Ninja();
+      case "surprise me":
+        currentPlayer.class = currentPlayer.generateClass();
         break;
     }
 
     //calculate bonuses after class selection
     $("#wep-link").click(function(){
       currentPlayer.health = currentPlayer.health + currentPlayer.class.healthBonus;
+      currentPlayer.strength = currentPlayer.strength + currentPlayer.class.strengthBonus;
+      currentPlayer.intelligence = currentPlayer.intelligence + currentPlayer.class.intelligenceBonus;
+
       console.log("current player health after class selection is", currentPlayer.health);
+      console.log("current player strength after class selection is", currentPlayer.strength);
+      console.log("current player intelligence after class selection is", currentPlayer.intelligence);
     });
 
     console.log("current Health is ", currentPlayer.health);
+
+    // add logic for classes, if class is equal to certain class, disable weapon selection for other class weapons
+    if(currentPlayer.class === "Warrior"){
+
+    }
 
 });
 
   //Built Functionality for Weapon Selection
   $(".actual_weapon").click(function(){
+    wepChosen = true;
     console.log($(this).html());
     var wepSelected = $(this).html();
 
@@ -164,6 +178,21 @@ $("#class-select .actual_classes").parent().click(function(){
         break;
       case "Axe":
         currentPlayer.weapon = new WarAxe();
+        break;
+      case "Staff O' Wuhnduhr":
+        currentPlayer.weapon = new StaffOhWunduhr();
+        break;
+      case "Book O' Reckoning":
+        currentPlayer.weapon = new BookOReckoning();
+        break;
+      case "Stunning Good Looks":
+        currentPlayer.weapon = new StunningGoodLooks();
+        break;
+      case "Bow of Sniping":
+        currentPlayer.weapon = new BowOfSniping();
+        break;
+      case "Throwing Stars":
+        currentPlayer.weapon = new ThrowingStars();
         break;
     }
 
@@ -217,8 +246,9 @@ $("#bowserEnemy").click(function(){
       if (playerDeath === false || enemyDeath === false) {
       var playerDamage = Math.floor(((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.strength/8));
       console.log("damage", playerDamage);
-      alert("Player did " + playerDamage + " damage!");
+      alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" for "+ playerDamage + " damage!");
 
+      //$("#player_battle_holder img").animate({marginLeft: 900}, 400, function(){ alert("Complete");});
 
       currentEnemy.health = currentEnemy.health - playerDamage;
       console.log(currentEnemy.health, "orc health");
@@ -245,7 +275,8 @@ $("#bowserEnemy").click(function(){
 
        var enemyDamage = Math.floor(((currentEnemy.strength + currentEnemy.intelligence + currentEnemy.weapon.damage)/7) + Math.random() * (currentEnemy.strength/8));
        console.log("enemy damage", enemyDamage);
-       alert("Enemy did " + enemyDamage + " damage!");
+       alert(currentEnemy.playerName+": attacks with " +currentEnemy.weapon.name+" for "+ enemyDamage + " damage!");
+       // alert("Enemy did " + enemyDamage + " damage!");
 
        currentPlayer.health = currentPlayer.health - enemyDamage;
        console.log("player health", currentPlayer.health);

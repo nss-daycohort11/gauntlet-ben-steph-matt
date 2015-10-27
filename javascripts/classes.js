@@ -117,4 +117,3 @@ Sorcerer.prototype = new Mage();
       - Ninja
       - Assassin
  */
-
