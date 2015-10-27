@@ -273,6 +273,7 @@ $(".stealth_weapon").click(function(){
     var totalEnemyHealth;
 
   $("#goatEnemy").click(function(){
+    $("#gameplay_box").html("");
     currentEnemy = orc;
     $("#enemy_health_bar .current_hp").css("width", 100+"%");
     $("#enemy_health_bar .current_hp").css("background-color","green");
@@ -296,6 +297,7 @@ $(".stealth_weapon").click(function(){
   });
 
 $("#bowserEnemy").click(function(){
+  $("#gameplay_box").html("");
     currentEnemy = bowser;
     $("#enemy_health_bar .current_hp").css("width", 100+"%");
     $("#enemy_health_bar .current_hp").css("background-color","green");
@@ -332,10 +334,12 @@ $("#bowserEnemy").click(function(){
 
       if(selectedClassType === "Mage"){
         var playerDamage = Math.floor(((currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.intelligence/6));
-        alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" and "+currentPlayer.class.ability.name+" of "+currentPlayer.class.ability.type+" for "+ playerDamage + " damage!");
+        // alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" and "+currentPlayer.class.ability.name+" of "+currentPlayer.class.ability.type+" for "+ playerDamage + " damage!");
+        $("#gameplay_box").prepend("<p>---->"+currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" and "+currentPlayer.class.ability.name+" of "+currentPlayer.class.ability.type+" for "+ playerDamage + " damage!</p>");
       } else {
         var playerDamage = Math.floor(((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.strength/8));
-        alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" for "+ playerDamage + " damage!");
+        // alert(currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" for "+ playerDamage + " damage!");
+        $("#gameplay_box").prepend("<p>---->"+currentPlayer.playerName+": attacks with " +currentPlayer.weapon.name+" for "+ playerDamage + " damage!</p>");
       }
   
 
@@ -374,7 +378,8 @@ $("#bowserEnemy").click(function(){
 
        var enemyDamage = Math.floor(((currentEnemy.strength + currentEnemy.intelligence + currentEnemy.weapon.damage)/7) + Math.random() * (currentEnemy.strength/8));
        console.log("enemy damage", enemyDamage);
-       alert(currentEnemy.playerName+": attacks with " +currentEnemy.weapon.name+" for "+ enemyDamage + " damage!");
+       // alert(currentEnemy.playerName+": attacks with " +currentEnemy.weapon.name+" for "+ enemyDamage + " damage!");
+      $("#gameplay_box").prepend("----->"+currentEnemy.playerName+": attacks with " +currentEnemy.weapon.name+" for "+ enemyDamage + " damage!");
        // alert("Enemy did " + enemyDamage + " damage!");
 
        currentPlayer.health = currentPlayer.health - enemyDamage;
