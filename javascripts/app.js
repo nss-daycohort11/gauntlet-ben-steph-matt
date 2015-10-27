@@ -1,5 +1,6 @@
 // $(document).ready(function() {
-
+  var audio = new Audio('Gauntlet Main Menu Theme.mp3');
+  audio.play();
   /*
     Test code to generate a human player and an orc player
    */
