@@ -238,3 +238,12 @@ right: 0px;
   margin-top: 20px;
 }
 
+
+@media screen and (max-width: 1220px){
+  #action_list{
+    top: 700px;
+  }
+  #action_list li{
+    width: 100%;
+  }
+}
