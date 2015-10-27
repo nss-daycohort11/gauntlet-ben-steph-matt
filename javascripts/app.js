@@ -1,5 +1,8 @@
 // $(document).ready(function() {
 
+  var audio = new Audio('Gauntlet Main Menu Theme.mp3');
+  audio.play();
+
   /*
     Test code to generate a human player and an orc player
    */
@@ -19,6 +22,9 @@
    */
   var spell = new Sphere();
   console.log("spell: ", spell.toString());
+
+var browser = new Browser();
+
 
 
   /*
@@ -325,6 +331,25 @@ $("#bowserEnemy").click(function(){
       totalPlayerHealth = currentPlayer.health;
       totalEnemyHealth = currentEnemy.health;
   });
+
+   //Added browser enemy
+ $("#browserEnemy").click(function(){
+    currentEnemy = browser;
+    console.log(currentEnemy);
+    $("#battleground").hide();
+     $("#indivBattle").show();
+      $("#player_stats_holder").append("<h1>"+currentPlayer.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+      // $("#player_stats_holder").append("<p>Current Health is "+ currentPlayer.health+"<p>");
+       $("#enemy_stats_holder").append("<h1>"+currentEnemy.toString()+"</h1>"+
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
+      // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
+      $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
+  }); 
   
   //Run Button <!--*************** ADDED ************-->
 $("#run-button").click(function(){
@@ -426,4 +451,3 @@ $("#run-button").click(function(){
     //Calcualte Enemy Damage and substract from Player Health -- same formula?
 
 // });
-
