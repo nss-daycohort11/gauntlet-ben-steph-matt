@@ -175,17 +175,20 @@ $("#class-select .actual_classes").parent().click(function(){
 
     // add logic for classes, if class is equal to certain class, disable weapon selection for other class weapons
     if(selectedClassType === "Fighter"){
+      // $("#player_battle_holder").html("<img src="+ currentPlayer.class.imageSource + ">");
       $(".mage_weapon").parent().addClass("grayOut");
       $(".mage_weapon").unbind("click");
       $(".stealth_weapon").parent().addClass("grayOut");
       $(".stealth_weapon").unbind("click");
 
     } if(selectedClassType === "Stealth"){
+      // $("#player_battle_holder").html("<img src="+ currentPlayer.class.imageSource + ">");
       $(".mage_weapon").parent().addClass("grayOut");
       $(".mage_weapon").unbind("click");
       $(".fighter_weapon").parent().addClass("grayOut");
       $(".fighter_weapon").unbind("click");
     } if(selectedClassType === "Mage"){
+      // $("#player_battle_holder").html("<img src="+ currentPlayer.class.imageSource + ">");
       $(".stealth_weapon").parent().addClass("grayOut");
       $(".stealth_weapon").unbind("click");
       $(".fighter_weapon").parent().addClass("grayOut");
@@ -265,52 +268,67 @@ $(".stealth_weapon").click(function(){
     });
 
   var currentEnemy;
-
+ //Log Health totals before battle
+    var totalPlayerHealth;
+    var totalEnemyHealth;
 
   $("#goatEnemy").click(function(){
     currentEnemy = orc;
+    $("#enemy_health_bar .current_hp").css("width", 100+"%");
+    $("#enemy_health_bar .current_hp").css("background-color","green");
     console.log(currentEnemy);
     $("#battleground").hide();
      $("#indivBattle").show();
       $("#player_stats_holder").append("<h1>"+currentPlayer.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span></p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span></p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span></p>"); 
       // $("#player_stats_holder").append("<p>Current Health is "+ currentPlayer.health+"<p>");
        $("#enemy_stats_holder").append("<h1>"+orc.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span></p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span></p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span></p>"); 
       // $("#enemy_stats_holder").append("<p>Current Health is "+ currentEnemy.health+"<p>");
       $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
+      totalPlayerHealth = currentPlayer.health;
+      totalEnemyHealth = currentEnemy.health;
+
   });
 
 $("#bowserEnemy").click(function(){
     currentEnemy = bowser;
+    $("#enemy_health_bar .current_hp").css("width", 100+"%");
+    $("#enemy_health_bar .current_hp").css("background-color","green");
     console.log(currentEnemy);
     $("#battleground").hide();
      $("#indivBattle").show();
       $("#player_stats_holder").append("<h1>"+currentPlayer.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span></p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span></p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span></p>"); 
       // $("#player_stats_holder").append("<p>Current Health is "+ currentPlayer.health+"<p>");
        $("#enemy_stats_holder").append("<h1>"+currentEnemy.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span></p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span></p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span></p>"); 
       // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
       $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
+      totalPlayerHealth = currentPlayer.health;
+      totalEnemyHealth = currentEnemy.health;
   });
   
 //Battle Logic
   //when attack is clicked
     //Calculate player damage and subtract from Enemy health-- formula str + int +damage /7 * a .1 - .3 modifier?
+
+
     $("#attack-button").click(function(){
+      // $("#enemy_health_bar .current_hp").css("width", (totalEnemyHealth/currentEnemy.health*10)+"%");
       var playerDeath = false;
       var enemyDeath = false;
       if (playerDeath === false || enemyDeath === false) {
       console.log("damage", playerDamage);
+
 
       if(selectedClassType === "Mage"){
         var playerDamage = Math.floor(((currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + Math.random() * (currentPlayer.intelligence/6));
@@ -325,6 +343,12 @@ $("#bowserEnemy").click(function(){
 
       currentEnemy.health = currentEnemy.health - playerDamage;
       console.log(currentEnemy.health, "orc health");
+      $("#enemy_health_bar .current_hp").css("width", ((currentEnemy.health/totalEnemyHealth)*100)+"%");
+      if(currentEnemy.health <= (totalEnemyHealth/2)){
+        $("#enemy_health_bar .current_hp").css("background-color","yellow");
+      } if(currentEnemy.health <= (totalEnemyHealth/3)){
+        $("#enemy_health_bar .current_hp").css("background-color","red");
+      }
 
       if(currentEnemy.health <= 0) {
           if(currentEnemy === bowser){
@@ -334,6 +358,7 @@ $("#bowserEnemy").click(function(){
             $("#goatEnemy").unbind("click");
              $("#goatEnemy").children().addClass("grayOut");
           }
+
         enemyDeath = true;
         $("#player_stats_holder").html("");
         $("#enemy_stats_holder").html("");
@@ -342,11 +367,10 @@ $("#bowserEnemy").click(function(){
         $("#battleground").show();
        
       } else {
-
        $("#enemy_stats_holder").html("<h1>"+currentEnemy.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
+                                        "<p>Current Health is "+"<span>"+ currentEnemy.health+"</span></p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentEnemy.strength+"</span></p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span></p>"); 
 
        var enemyDamage = Math.floor(((currentEnemy.strength + currentEnemy.intelligence + currentEnemy.weapon.damage)/7) + Math.random() * (currentEnemy.strength/8));
        console.log("enemy damage", enemyDamage);
@@ -355,6 +379,15 @@ $("#bowserEnemy").click(function(){
 
        currentPlayer.health = currentPlayer.health - enemyDamage;
        console.log("player health", currentPlayer.health);
+       //animate width
+       $("#player_health_bar .current_hp").css("width", ((currentPlayer.health/totalPlayerHealth)*100)+"%");
+
+       //animate color for health widths
+       if(currentPlayer.health <= (totalplayerHealth/2)){
+        $("#enemy_health_bar .current_hp").css("background-color","yellow");
+      } if(currentPlayer.health <= (totalplayerHealth/3)){
+        $("#enemy_health_bar .current_hp").css("background-color","red");
+      }
 
        if (currentPlayer.health <= 0) {
         playerDeath = true;
@@ -366,9 +399,9 @@ $("#bowserEnemy").click(function(){
        }
 
        $("#player_stats_holder").html("<h1>"+currentPlayer.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span></p>"+
+                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span></p>"+
+                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span></p>"); 
        }
      }
     });

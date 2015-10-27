@@ -194,3 +194,25 @@ body {
   background-color: gray;
 }
 
+.health_bar{
+  position: absolute;
+  top: 0px;
+  width: 30%;
+  /*background-color: red;*/
+  height: 40px;
+  border: 5px solid rgba(255, 255, 255, 0.61);
+  border-radius: 5px;
+}
+#enemy_health_bar{
+right: 0px;
+}
+
+.current_hp{
+  position: relative; 
+  height: 100%;
+  width: 100%;
+  background-color: #089408;
+  transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+}
+
