@@ -1,4 +1,4 @@
-// $(document).ready(function() {
+$(document).ready(function() {
 
   var audio = new Audio('Gauntlet Main Menu Theme.mp3');
   audio.play();
@@ -458,4 +458,6 @@ $("#run-button").click(function(){
             // --> var damage = ((currentPlayer.strength + currentPlayer.intelligence + currentPlayer.weapon.damage)/7) + (damage * .3) 
     //Calcualte Enemy Damage and substract from Player Health -- same formula?
 
-// });
+});
+
+
