@@ -173,19 +173,26 @@ $("#class-select .actual_classes").parent().click(function(){
 
     console.log("current Health is ", currentPlayer.health);
 
+
     // add logic for classes, if class is equal to certain class, disable weapon selection for other class weapons
     if(selectedClassType === "Fighter"){
+      //<!--*************** ADDED the html to link the images depending on the class ************-->
+      $("#player_battle_holder").html("<img src =" + currentPlayer.class.imageSource + ">");
       $(".mage_weapon").parent().addClass("grayOut");
       $(".mage_weapon").unbind("click");
       $(".stealth_weapon").parent().addClass("grayOut");
       $(".stealth_weapon").unbind("click");
 
     } if(selectedClassType === "Stealth"){
+      //<!--*************** ADDED the html to link the images depending on the class ************-->
+      $("#player_battle_holder").html("<img src =" + currentPlayer.class.imageSource + ">");
       $(".mage_weapon").parent().addClass("grayOut");
       $(".mage_weapon").unbind("click");
       $(".fighter_weapon").parent().addClass("grayOut");
       $(".fighter_weapon").unbind("click");
     } if(selectedClassType === "Mage"){
+      //<!--*************** ADDED the html to link the images depending on the class ************-->
+      $("#player_battle_holder").html("<img src =" + currentPlayer.class.imageSource + ">");
       $(".stealth_weapon").parent().addClass("grayOut");
       $(".stealth_weapon").unbind("click");
       $(".fighter_weapon").parent().addClass("grayOut");
@@ -303,6 +310,11 @@ $("#bowserEnemy").click(function(){
       $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
   });
   
+  //Run Button <!--*************** ADDED ************-->
+$("#run-button").click(function(){
+  $("#indivBattle").hide();
+  $("#battleground").show();  
+});
 //Battle Logic
   //when attack is clicked
     //Calculate player damage and subtract from Enemy health-- formula str + int +damage /7 * a .1 - .3 modifier?
@@ -366,9 +378,9 @@ $("#bowserEnemy").click(function(){
        }
 
        $("#player_stats_holder").html("<h1>"+currentPlayer.toString()+"</h1>"+
-                                        "<p>Current Health is "+"<span>"+ currentPlayer.health+"</span><p>"+
-                                        "<p>Current Strength is "+"<span>"+ currentPlayer.strength+"</span><p>"+
-                                        "<p>Current Intelligence is "+"<span>"+ currentPlayer.intelligence+"</span><p>"); 
+                                        "<p>Current Health is <span>"+ currentPlayer.health+"</span></p>"+
+                                        "<p>Current Strength is <span>"+ currentPlayer.strength+"</span></p>"+
+                                        "<p>Current Intelligence is <span>"+ currentPlayer.intelligence+"</span></p>"); 
        }
      }
     });
