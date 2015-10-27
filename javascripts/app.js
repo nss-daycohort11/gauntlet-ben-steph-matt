@@ -23,7 +23,7 @@
   var spell = new Sphere();
   console.log("spell: ", spell.toString());
 
-var browser = new Browser();
+  var browser = new Browser();
 
 
 
@@ -335,6 +335,9 @@ $("#bowserEnemy").click(function(){
    //Added browser enemy
  $("#browserEnemy").click(function(){
     currentEnemy = browser;
+    $("#gameplay_box").html("");
+    $("#enemy_health_bar .current_hp").css("width", 100+"%");
+    $("#enemy_health_bar .current_hp").css("background-color","green");
     console.log(currentEnemy);
     $("#battleground").hide();
      $("#indivBattle").show();
@@ -349,6 +352,8 @@ $("#bowserEnemy").click(function(){
                                         "<p>Current Intelligence is "+"<span>"+ currentEnemy.intelligence+"</span><p>"); 
       // $("#enemy_stats_holder").append("<p>Current Health is "+ orc.health+"<p>");
       $("#enemy_battle_holder").html("<img src="+ currentEnemy.imageSource + ">");
+      totalPlayerHealth = currentPlayer.health;
+      totalEnemyHealth = currentEnemy.health;
   }); 
   
   //Run Button <!--*************** ADDED ************-->
