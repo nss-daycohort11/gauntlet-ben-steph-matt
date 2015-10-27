@@ -34,4 +34,14 @@ Bowser.prototype = new Monster();
 //Ben Code
   //Define enemies
 
+var Browser = function() {
+  this.playerName = "Browser";
+  this.health += 60;
+  this.class = new Thief();
+  this.strength += this.class.strengthBonus;
+  this.health += this.class.healthBonus;
+  this.weapon = new Torment();
+  this.imageSource = "http://img4.wikia.nocookie.net/__cb20130116153004/uncyclopedia/images/c/cb/Internet-troll-face-explorer.png";
+}
 
+Browser.prototype = new Monster();

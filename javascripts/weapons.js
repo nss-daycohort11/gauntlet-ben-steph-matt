@@ -74,6 +74,9 @@ var BowOfSniping = function() {
 };
 BowOfSniping.prototype = new Weapon();
 
-
-
-
+var Torment = function() {
+  this.name = "Torment";
+  this.damage = 20;
+  this.hands = 2;
+};
+Torment.prototype = new Weapon();
