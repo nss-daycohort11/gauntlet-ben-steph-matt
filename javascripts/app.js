@@ -403,6 +403,9 @@ $("#run-button").click(function(){
           } else if(currentEnemy === orc){
             $("#goatEnemy").unbind("click");
              $("#goatEnemy").children().addClass("grayOut");
+          } else if(currentEnemy === browser){
+            $("#browserEnemy").unbind("click");
+            $("#browserEnemy").children().addClass("grayOut");
           }
 
         enemyDeath = true;
